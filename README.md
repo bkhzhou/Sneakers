@@ -1,4 +1,3 @@
 # Sneakers
-I was tired of calculations for selling sneakers through third party apps
-Decided to create a Sneaker Calculator for Goat & Stockx
-Coded in C++
+I was tired of calculating the payout for Goat and StockX payout because it was tidious of click and typing on the site itself. If you use Goat and StockX to compare payout prices I would definitely use this.
+This is coded in Basic C++ knowledge.
