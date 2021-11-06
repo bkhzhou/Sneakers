@@ -1,3 +1,10 @@
+/*StockX remodel of their seller fees.
+* StockX Level 1 is 13%, Level 2 12.5%, Level 3 12%, Level 4 11.5%
+* Goat has the same fee structure for sellers.
+* - Added new calculations fees
+* - Added "Fees" section to make your excel life easier.
+*/
+
 #include<iostream>
 #include<cmath>
 #include<iomanip>
@@ -6,33 +13,34 @@
 using namespace std;
 int main()
 {
+	boolean run = true;
 	double price, goat1, goat2 , stockx1, stockx2, stockx3, stockx4;
 
-	system("Color 0A");
-	cout << "Sneaker Calculator Goat / StockX made by KH#0870" << endl;
+	system("Color 0A");			//Able to change command sys color
+	cout << "Sneaker Calculator Goat / StockX made by KH#0870\nv0.05" << endl;
 	cout << "Enter price for payout after fee: ";
 	cin >> price;
-	while (price > 0)
+	while (run)
 	{
 		cout << fixed << setprecision(2);
-		goat1 = (price * 0.095) + 5;
-		goat2 = (price - goat1) * 0.029;
-		stockx1 = (price * 0.125);
-		stockx2 = (price * 0.12);
-		stockx3 = (price * 0.115);
-		stockx4 = (price * 0.11);
+		goat1 = (price * 0.095) + 5;		//Goat sale is 9.5% + $5 per
+		goat2 = (price - goat1) * 0.029;	//Goat cash out processing fee is 2.9%
+		stockx1 = (price * 0.13);			//StockX sale is its level % + 3% processing
+		stockx2 = (price * 0.125);
+		stockx3 = (price * 0.12);
+		stockx4 = (price * 0.115);
 		cout << endl;
 
-		cout << left << setw(20) << "Goat Payout" << setw(20) << "StockX Level 1" << setw(20) << "StockX Level 2" << setw(20) << "StockX Level 3" << setw(20) << "StockX Level 4" << endl;
-
+		cout << left << setw(20) << "Goat Payout" << setw(20) << "StockX Level 1" << setw(20) << "Level 2" << setw(20) << "Level 3" << setw(20) << "Level 4" << endl;
 		cout << left << setw(20) << (price - goat1) - goat2 << setw(20) << price - stockx1 << setw(20) << price - stockx2 << setw(20) << price - stockx3 << setw(20) << price - stockx4 << endl;
+
+		cout << left << setw(20) << "\nTotal Fees:" << endl;
+		cout << left << setw(20) << (price - ((price - goat1) - goat2)) << setw(20) << (price - (price - stockx1)) << setw(20) << (price - (price - stockx2)) << setw(20) << (price -(price - stockx3)) << setw(20) << (price - (price - stockx4)) << endl;;
 
 		cout << endl;
 
 		cout << "Enter price for payout after fee: ";
 		cin >> price;
-
-
 	}
 
 	system("pause");
